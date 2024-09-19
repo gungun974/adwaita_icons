@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 /// This widget uses the [flutter_svg] package to render 'adwaita' style icons,
 /// provided by the GNOME team. They're located inside the 'assets' folder.
@@ -63,9 +64,8 @@ class AdwaitaIcon extends StatelessWidget {
 
     final selectedColor = color ?? iconTheme.color;
 
-    return SvgPicture.asset(
-      asset,
-      package: 'adwaita_icons',
+    return SvgPicture(
+      AssetBytesLoader(asset, packageName: 'adwaita_icons'),
       width: size ?? iconTheme.size,
       height: size ?? iconTheme.size,
       colorFilter: selectedColor != null
