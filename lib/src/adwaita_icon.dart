@@ -60,12 +60,17 @@ class AdwaitaIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final iconTheme = IconTheme.of(context);
+
+    final selectedColor = color ?? iconTheme.color;
+
     return SvgPicture.asset(
       asset,
       package: 'adwaita_icons',
       width: size ?? iconTheme.size,
       height: size ?? iconTheme.size,
-      color: color ?? iconTheme.color,
+      colorFilter: selectedColor != null
+          ? ColorFilter.mode(selectedColor, BlendMode.srcIn)
+          : null,
       semanticsLabel: semanticLabel,
     );
   }
